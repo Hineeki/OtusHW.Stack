@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,47 +9,51 @@ namespace StackHomeWork
 {
     internal class Stack
     {
-        List<string> Strings;
+        List<string> _strings;
         public Stack(params string[] strings)
         {
-            Strings = new List<string>();
+            _strings = new List<string>();
             foreach (string s in strings)
             {
-                Strings.Add(s);
+                _strings.Add(s);
             }
         }
         public void Add(string s)
         {
-            Strings.Add(s);
+            _strings.Add(s);
         }
-        public void Pop()
+        public string Pop()
         {
-            if (Strings.Count == 0)
+            if (_strings.Count == 0)
             {
                 throw new EmptyEx("Стек пустой");
             }
-            Strings.RemoveAt(Strings.Count - 1);
+            string poopedString = (_strings[_strings.Count - 1]);
+            _strings.RemoveAt(_strings.Count - 1);
+            return poopedString;
         }
         public void Clear()
         {
-            Strings.Clear();
+            _strings.Clear();
         }
-        public int Size
-        {
-            get
-            {                
-                return Strings.Count;
-            }
-        }
+
+        //public int Size
+        //{
+        //    get
+        //    {                
+        //        return _strings.Count;
+        //    }
+        //}
+        public string Size => Convert.ToString(_strings.Count);
         public string Top
         {
             get
             {
-                if (Strings.Count == 0)
+                if (_strings.Count == 0)
                 {
                     return null;
                 }
-                return Strings[Strings.Count-1];
+                return _strings[_strings.Count-1];
             }
         }
     }    
