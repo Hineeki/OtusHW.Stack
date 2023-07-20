@@ -44,7 +44,7 @@ namespace StackHomeWork
         //        return _strings.Count;
         //    }
         //}
-        public string Size => Convert.ToString(_strings.Count);
+        public int Size =>(_strings.Count);
         public string Top
         {
             get
